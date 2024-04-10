@@ -1,0 +1,14 @@
+@import '../../styles/_typography.scss';
+
+.start-button {
+    background-color: black;
+    color: white;
+    font-family: 'Pixilify-Sans';
+    font-size: xx-large;
+    padding: 1rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+    &:hover {
+        transform: scale(1.2);
+        background-color: rgb(50, 48, 48);
+    }
+}
