@@ -8,3 +8,5 @@ function Play() {
     </main>
   );
 }
+
+export default Play;

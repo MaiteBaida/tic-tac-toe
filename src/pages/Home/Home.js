@@ -1,14 +1,14 @@
-import "../styles/_global.scss";
+import "../../styles/_global.scss";
 import "./Home.scss";
 import { useNavigate } from "react-router-dom";
-import StartButton from "../components/StartButton/StartButton";
+import StartButton from "../../components/StartButton/StartButton";
 
 function Home() {
   const nav = useNavigate();
 
   return (
     <main className="home">
-      <StartButton label={"Play Now!"} />
+      <StartButton label={"Play Now!"} onClick={() => nav("/play")} />
     </main>
   );
 }
