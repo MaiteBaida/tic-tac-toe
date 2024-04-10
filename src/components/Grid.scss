@@ -1,0 +1,29 @@
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.grid {
+    &-container {
+        display: grid;
+        grid-template-columns: 4rem 4rem 4rem;
+    }
+    &-item {
+        height: 4rem;
+        width: 4rem;
+        background-color: white;
+    }
+}
+
+.g11, .g12, .g21, .g22 {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.g13, .g23 {
+    border-bottom: 2px solid black;
+}
+
+.g31, .g32 {
+    border-right: 2px solid black;
+}
