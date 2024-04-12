@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import "./Grid.scss";
+import StartButton from "../../components/StartButton/StartButton";
 import circle from "../../assets/icons/circle.svg";
 import x from "../../assets/icons/x.svg";
 
 function Grid() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
 
   const handleClick = (index) => {
-    if (board[index] !== null || calculateWinner(board)) return;
+    if (board[index] !== null || calculateWinner(board) || gameOver) return;
 
     const newBoard = [...board];
     newBoard[index] = isXNext ? "X" : "O";
     setBoard(newBoard);
 
     setIsXNext(!isXNext);
+    if (calculateWinner(newBoard)) {
+      setGameOver(true); // Set gameOver to true when the game is over
+    } else if (newBoard.every((cell) => cell !== null)) {
+      setGameOver(true); // Set gameOver to true if it's a draw
+    }
   };
 
   const calculateWinner = (squares) => {
@@ -41,13 +48,23 @@ function Grid() {
     return null;
   };
 
+  const resetGame = () => {
+    setBoard(Array(9).fill(null));
+    setIsXNext(true);
+    setGameOver(false);
+  };
+
   const winner = calculateWinner(board);
-  const status = winner
-    ? `Winner: ${winner}`
-    : `Next player: ${isXNext ? "X" : "O"}`;
+  let status;
+  if (winner) {
+    status = `Winner: ${winner}`;
+  } else if (board.every((cell) => cell !== null)) {
+    status = "It's a draw! Nobody wins.";
+  } else {
+    status = `Next player: ${isXNext ? "X" : "O"}`;
+  }
 
   const renderCell = (index) => {
-    // Define an array of classes for each cell
     const cellClasses = [
       "grid-item g11",
       "grid-item g12",
@@ -64,21 +81,33 @@ function Grid() {
     const imageSrc =
       board[index] === "X" ? x : board[index] === "O" ? circle : null;
 
+    // Check if the current cell is part of the winning combination
+    const isWinningCell = winner && winner === board[index];
+
     // Return the button with image content and appropriate class and click handler
     return (
-      <button className={cellClasses[index]} onClick={() => handleClick(index)}>
+      <button
+        className={`${cellClasses[index]} ${
+          isWinningCell ? "winning-cell" : ""
+        }`}
+        onClick={() => handleClick(index)}
+      >
         {imageSrc && <img src={imageSrc} alt={board[index]} />}{" "}
-        {/* Render the image if source is available */}
       </button>
     );
   };
 
   return (
     <main className="grid">
-      <div className="grid-container">
-        {board.map((cell, index) => renderCell(index))}
-      </div>
-      <div>{status}</div>
+      <section className="grid-box">
+        <div className="status">{status}</div>
+        <div className="button-container">
+          {gameOver && <StartButton label="Play Again" onClick={resetGame} />}
+        </div>
+        <div className="grid-container">
+          {board.map((cell, index) => renderCell(index))}
+        </div>
+      </section>
     </main>
   );
 }
