@@ -4,6 +4,18 @@ import StartButton from "../../components/StartButton/StartButton";
 import circle from "../../assets/icons/circle.svg";
 import x from "../../assets/icons/x.svg";
 
+// Define the winning lines globally
+const lines = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8], // rows
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8], // columns
+  [0, 4, 8],
+  [2, 4, 6], // diagonals
+];
+
 function Grid() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
@@ -17,6 +29,7 @@ function Grid() {
     setBoard(newBoard);
 
     setIsXNext(!isXNext);
+
     if (calculateWinner(newBoard)) {
       setGameOver(true); // Set gameOver to true when the game is over
     } else if (newBoard.every((cell) => cell !== null)) {
@@ -25,16 +38,6 @@ function Grid() {
   };
 
   const calculateWinner = (squares) => {
-    const lines = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8], //line
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8], //column
-      [0, 4, 8],
-      [2, 4, 6], //diagonal
-    ];
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (
@@ -42,10 +45,10 @@ function Grid() {
         squares[a] === squares[b] &&
         squares[a] === squares[c]
       ) {
-        return squares[a];
+        return squares[a]; // Return the winner ('X' or 'O')
       }
     }
-    return null;
+    return null; // Return null if no winner
   };
 
   const resetGame = () => {
@@ -82,7 +85,13 @@ function Grid() {
       board[index] === "X" ? x : board[index] === "O" ? circle : null;
 
     // Check if the current cell is part of the winning combination
-    const isWinningCell = winner && winner === board[index];
+    const isWinningCell =
+      winner &&
+      lines.some(
+        (line) =>
+          line.includes(index) &&
+          line.every((cell) => board[cell] === board[index])
+      );
 
     // Return the button with image content and appropriate class and click handler
     return (
