@@ -8,7 +8,10 @@ function Home() {
 
   return (
     <main className="home">
-      <StartButton label={"Play Now!"} onClick={() => nav("/play")} />
+      <StartButton
+        label={"Play Now!"}
+        onClick={() => nav("tic-tac-toe/play")}
+      />
     </main>
   );
 }

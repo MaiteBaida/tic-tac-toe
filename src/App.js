@@ -1,5 +1,4 @@
 import "./styles/_global.scss";
-import Grid from "./components/Grid/Grid";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Play from "./pages/Play/Play";
@@ -7,7 +6,7 @@ import Play from "./pages/Play/Play";
 function App() {
   return (
     <BrowserRouter>
-      <Link to="/">
+      <Link to="/tic-tac-toe">
         <h1>Tic-Tac-Toe</h1>
       </Link>
       <Routes>
