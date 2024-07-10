@@ -11,8 +11,8 @@ function App() {
         <h1>Tic-Tac-Toe</h1>
       </Link>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/play" element={<Play />} />
+        <Route path="/tic-tac-toe" element={<Home />} />
+        <Route path="/tic-tac-toe/play" element={<Play />} />
       </Routes>
     </BrowserRouter>
   );
