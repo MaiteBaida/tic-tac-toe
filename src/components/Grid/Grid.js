@@ -4,7 +4,6 @@ import StartButton from "../../components/StartButton/StartButton";
 import circle from "../../assets/icons/circle.svg";
 import x from "../../assets/icons/x.svg";
 
-// Define the winning lines globally
 const lines = [
   [0, 1, 2],
   [3, 4, 5],

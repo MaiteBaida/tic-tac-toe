@@ -11,7 +11,7 @@ function App() {
       </Link>
       <Routes>
         <Route path="/tic-tac-toe" element={<Home />} />
-        <Route path="/tic-tac-toe/play" element={<Play />} />
+        <Route path="/play" element={<Play />} />
       </Routes>
     </BrowserRouter>
   );
