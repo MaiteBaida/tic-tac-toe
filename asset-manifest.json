@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/tic-tac-toe/static/css/main.34a57696.css",
-    "main.js": "/tic-tac-toe/static/js/main.eef53eaa.js",
+    "main.js": "/tic-tac-toe/static/js/main.31166271.js",
     "static/media/Honk-Regular-VariableFont.ttf": "/tic-tac-toe/static/media/Honk-Regular-VariableFont.4bf2941bb301fd2837aa.ttf",
     "static/media/Pixelify-Sans-VariableFont.ttf": "/tic-tac-toe/static/media/Pixelify-Sans-VariableFont.088d140132e39b3c37a8.ttf",
     "index.html": "/tic-tac-toe/index.html",
     "static/media/circle.svg": "/tic-tac-toe/static/media/circle.7ca95ba86270c8dc54e557574cede8ba.svg",
     "static/media/x.svg": "/tic-tac-toe/static/media/x.ef0ddad40ff3e0ef18ff314393b060e1.svg",
     "main.34a57696.css.map": "/tic-tac-toe/static/css/main.34a57696.css.map",
-    "main.eef53eaa.js.map": "/tic-tac-toe/static/js/main.eef53eaa.js.map"
+    "main.31166271.js.map": "/tic-tac-toe/static/js/main.31166271.js.map"
   },
   "entrypoints": [
     "static/css/main.34a57696.css",
-    "static/js/main.eef53eaa.js"
+    "static/js/main.31166271.js"
   ]
 }
