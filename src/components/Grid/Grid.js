@@ -86,12 +86,13 @@ function Grid() {
     // Check if the current cell is part of the winning combination
     const isWinningCell =
       winner &&
-      lines.some(
-        (line) =>
-          line.includes(index) &&
-          line.every((cell) => board[cell] === board[index])
-      );
-
+      lines.some((line) => {
+        if (line.includes(index)) {
+          return line.every((cell) => {
+            return board[cell] === board[index] && board[cell] === winner;
+          });
+        }
+      });
     // Return the button with image content and appropriate class and click handler
     return (
       <button
