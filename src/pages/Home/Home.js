@@ -10,7 +10,7 @@ function Home() {
     <main className="home">
       <StartButton
         label={"Play Now!"}
-        onClick={() => nav("tic-tac-toe/play")}
+        onClick={() => nav("/tic-tac-toe/play")}
       />
     </main>
   );
